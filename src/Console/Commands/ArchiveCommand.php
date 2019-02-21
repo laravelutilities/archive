@@ -22,7 +22,7 @@ class ArchiveCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Command will start archiving table data.';
 
     /**
      * Execute the console command.
@@ -32,7 +32,10 @@ class ArchiveCommand extends Command
     public function handle()
     {
         $tables = config('archive.tables');
-
+        if(empty($tables))
+        {
+            $this->error('Please add the table in archive configuration');
+        }
         config(['database.connections.archive' => config('archive.connections.archive')]);
         
         $connect = \DB::connection('archive')->getPdo();

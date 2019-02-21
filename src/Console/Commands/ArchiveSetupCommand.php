@@ -28,6 +28,11 @@ class ArchiveSetupCommand extends Command
     public function handle()
     {
         $tables = config('archive.tables');
+        
+        if(empty($tables))
+        {
+            $this->error('Please add the table in archive configuration');
+        }
 
         config(['database.connections.archive' => config('archive.connections.archive')]);
 

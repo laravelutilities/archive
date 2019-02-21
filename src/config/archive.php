@@ -1,14 +1,55 @@
 <?php
 
 return [
+    /*
+      |--------------------------------------------------------------------------
+      | Format Datetime
+      |--------------------------------------------------------------------------
+      | Currently, this package is supporting epoch timestamp. In future, this 
+      | will start supporting other format as well.
+      | 
+      | Note: For the time being, package is not using this configuration
+     */
     'format_datetime' => 'epoch',
-    'run'             => 'daily',
+    
+    /*
+      |--------------------------------------------------------------------------
+      | Keep
+      |--------------------------------------------------------------------------
+      | The data older than keep number of days will be sent to archive
+      | 
+      | Note: DATE_SUB(CURDATE(), INTERVAL " . config('archive.keep').") is being used 
+     */
     'keep'            => '45 DAY',
+    
+    /*
+      |--------------------------------------------------------------------------
+      | Created_at Field
+      |--------------------------------------------------------------------------
+      | On the basis of field against which keep (above) is being calculated
+      | 
+     */
     'created_at_field'=> 'created_at',
+    /*
+      |--------------------------------------------------------------------------
+      | Tables
+      |--------------------------------------------------------------------------
+      | Tables to be sent to archive
+      | Strictly follow : database.table
+      | 
+      | 
+     */
     'tables'          => [
-        'workflow.sms_api_response_packets',
-        'workflow.email_api_response_packets'
+        // 'database.table',
     ],
+    
+    /*
+      |--------------------------------------------------------------------------
+      | Connection
+      |--------------------------------------------------------------------------
+      | To Set the database connection
+      | 
+     */
     'connections'     => [
         'archive' => [
             'driver'    => 'mysql',
