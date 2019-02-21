@@ -1,0 +1,25 @@
+{
+    "name": "laravelutilities/archive",
+    "description": "Archive tables",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ankit Vishwakarma",
+            "email": "er.ankitvishwakarma@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "LaravelUtility\\Archive\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelUtility\\Archive\\ArchiveServiceProvider"
+            ]
+        }
+    }
+}
